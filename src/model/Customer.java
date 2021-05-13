@@ -107,6 +107,69 @@ public class Customer {
 
 			return output;
 		}
+// update CUstomer
+	public String updateCustomer(String ID, String name, String email, String nic, String mobile) {
+		String output = "";
+
+		try {
+			
+
+			if (con == null) {
+				return "Error  connecting to the database for updating.";
+			}
+
+			String query = "update customer set name=?,email=?,nic=?,mobile=? WHERE ID=?";
+
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+			preparedStmt.setString(1, name);
+			preparedStmt.setString(2, email);
+			preparedStmt.setString(3, nic);
+			preparedStmt.setInt(4, Integer.parseInt(mobile));
+			preparedStmt.setInt(5, Integer.parseInt(ID));
+
+			preparedStmt.execute();
+			
+
+			String UpdateCustomer = readCustomer();
+			output = "{\"status\":\"success\", \"data\": \"" + UpdateCustomer + "\"}";
+		} catch (Exception e) {
+			output = "{\"status\":\"error\", \"data\": \"Error while Updating Customer Details.\"}";
+			System.err.println(e.getMessage());
+		}
+
+		return output;
+	}
+
+	// delete Customer
+	public String deleteCustomer(String ID) {
+		String output = "";
+		try {
+			
+			if (con == null) {
+				return "Error  connecting to the database for deleting.";
+			}
+
+			String query = "delete from customer where ID=?";
+
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+
+			preparedStmt.setInt(1, Integer.parseInt(ID));
+
+			preparedStmt.execute();
+			
+
+			String DeleteCustomer = readCustomer();
+			output = "{\"status\":\"success\", \"data\": \"" + DeleteCustomer + "\"}";
+
+		} catch (Exception e) {
+
+			output = "{\"status\":\"error\", \"data\": \"Error while Deleting Customer data.\"}";
+			System.err.println(e.getMessage());
+
+		}
+
+		return output;
+	}
 
 
 	}
