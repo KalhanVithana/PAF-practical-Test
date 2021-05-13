@@ -64,7 +64,30 @@ public class CustomerApI  extends HttpServlet {
 	}
 	
 	
-	
+	protected void doPut(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+			Map<String, String> param = getParasMap(request);
+
+			String result = customer.updateCustomer(param.get("hidcustomerIDSave").toString(),
+					param.get("name").toString().toString().replace("+", " "),
+					param.get("email").toString().toString().replace("%", "@"),
+					param.get("nic").toString().toString().replace("+", " "),
+					param.get("mobile").toString());
+
+			response.getWriter().write(result);
+		}
+
+	   protected void doDelete(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+
+			Map<String, String> param = getParasMap(request);
+
+			String result = customer.deleteCustomer(param.get("customerID").toString());
+
+			response.getWriter().write(result);
+		}
+
 	}
 
 
