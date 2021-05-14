@@ -2,7 +2,7 @@
 
 
 # about project
-This project base  on a company Customer register System with client Side.when customer can't buy a product without registerd.Admin can Also view customer and update and delete their details.
+- This project base  on a company Customer register System with client Side.when customer can't buy a product without registerd.Admin can Also view customer and update and delete their details.
 
 # THE Technologies
 - java JAX-RS(jersy) Restful web service
@@ -10,11 +10,11 @@ This project base  on a company Customer register System with client Side.when c
 - eclipse IDE
 
 # Database
-mysql database
+- mysql database
 
 
 # page design
-boostrap
+- boostrap
 
 
 # Developer
